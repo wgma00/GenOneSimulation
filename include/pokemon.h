@@ -11,6 +11,7 @@ class Pokemon {
         enum regStat = {HP, ATK, DEF, SPC, SPE};
         enum modStat = {ATK, DEF, SPC, SPE};
         Status status;
+        bool isConfused;
 
     public:
         Pokemon();
