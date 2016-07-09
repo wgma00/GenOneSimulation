@@ -8,10 +8,13 @@ class Pokemon {
         Move move1, move2, move3, move4;
         int stats[5];
         int mods[4];
+        enum regStat = {HP, ATK, DEF, SPC, SPE};
         enum modStat = {ATK, DEF, SPC, SPE};
         Status status;
 
     public:
+        Pokemon();
+        Pokemon(Type *types, Move moves*, int *stats, int *mods, Status status);
         Type getType1();
         Type getType2();
         int getHP();
