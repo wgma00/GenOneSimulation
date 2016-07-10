@@ -16,15 +16,18 @@ class Pokemon {
     public:
         Pokemon();
         Pokemon(Type *types, Move moves*, int *stats, int *mods, Status status);
-        Type getType1();
-        Type getType2();
-        int getHP();
-        int getAtk();
-        int getDef();
-        int getSpc();
-        int getSpe();
-        int *getMods();
-        Status getStatus();
+
+        Type type1();
+        Type type2();
+        int hp();
+        int atk();
+        int def();
+        int spc();
+        int spe();
+        int *mods();
+        Status status();
+        bool confused();
+
         void setType1(Type newType);
         void setType2(Type newType);
         void setHP(int newHP);
@@ -35,9 +38,10 @@ class Pokemon {
         void setAtkMod(int newMod);
         void setDefMod(int newMod);
         void setSpcMod(int newMod);
-        void setSpcMod(int newMod);
-        void attck(Pokemon pokemon, Move move);
+        void setSpeMod(int newMod);
         void setStatus(Status newStatus);
+
+        void Attack(Pokemon pokemon, Move move);
 };
 
 #endif

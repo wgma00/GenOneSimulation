@@ -1,95 +1,100 @@
 Pokemon::Pokemon() {
-    
+
 }
 
-Pokemon::Pokemon(Type *types, Move moves*, int *stats, int *mods, Status status) {
-    
+Pokemon::Pokemon(Type *types, Move moves*, int *stats, int *mods,
+        Status status) {
+
 }
 
-Type Pokemon::getType1() {
-    
+Type Pokemon::type1() {
+    return type1;
 }
 
-Type Pokemon::getType2() {
-    
+Type Pokemon::type2() {
+    return type2;
 }
 
-int Pokemon::getHP() {
-    
+int Pokemon::hp() {
+    return hp;
 }
 
-int Pokemon::getAtk() {
-    
+int Pokemon::atk() {
+    return atk;
 }
 
-int Pokemon::getDef() {
-    
+int Pokemon::def() {
+    return def;
 }
 
-int Pokemon::getSpc() {
-    
+int Pokemon::spc() {
+    return spc;
 }
 
-int Pokemon::getSpe() {
-    
+int Pokemon::spe() {
+    return spe;
 }
 
-int *Pokemon::getMods() {
-    
+int *Pokemon::mods() {
+    return mods;
 }
 
-Status Pokemon::getStatus() {
-    
+Status Pokemon::status() {
+    return status;
+}
+
+bool Pokemon::confused() {
+    return isConfused;
 }
 
 void Pokemon::setType1(Type newType) {
-    
+    type1 = newType;
 }
 
 void Pokemon::setType2(Type newType) {
-    
+    type2 = newType;
 }
 
 void Pokemon::setHP(int newHP) {
-    
+    stats[regStat.HP] = newHP;
 }
 
 void Pokemon::setAtk(int newAtk) {
-    
+    stats[regStat.ATK] = newHP;
 }
 
 void Pokemon::setDef(int newDef) {
-    
+    stats[regStat.DEF] = newHP;
 }
 
 void Pokemon::setSpc(int newSpc) {
-    
+    stats[regStat.SPC] = newHP;
 }
 
 void Pokemon::setSpe(int newSpe) {
-    
+    stats[regStat.SPE] = newHP;
 }
 
 void Pokemon::setAtkMod(int newMod) {
-    
+    stats[modStat.ATK] = newHP;
 }
 
 void Pokemon::setDefMod(int newMod) {
-    
+    stats[modStat.DEF] = newHP;
 }
 
 void Pokemon::setSpcMod(int newMod) {
-    
+    stats[modStat.SPC] = newHP;
 }
 
-void Pokemon::setSpcMod(int newMod) {
-    
-}
-
-void Pokemon::attck(Pokemon pokemon, Move move) {
-    
+void Pokemon::setSpeMod(int newMod) {
+    stats[modStat.SPE] = newHP;
 }
 
 void Pokemon::setStatus(Status newStatus) {
+    status = newStatus;
+}
+
+void Pokemon::Attck(Pokemon pokemon, Move move) {
     
 }
