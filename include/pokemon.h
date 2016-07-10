@@ -16,6 +16,7 @@ class Pokemon {
     public:
         Pokemon();
         Pokemon(Type *types, Move moves*, int *stats, int *mods, Status status);
+        ~Pokemon();
 
         Type type1();
         Type type2();

@@ -2,8 +2,12 @@ Pokemon::Pokemon() {
 
 }
 
-Pokemon::Pokemon(Type *types, Move moves*, int *stats, int *mods,
+Pokemon::Pokemon(Type *types, Move *moves, int *stats, int *mods,
         Status status) {
+
+}
+
+Pokemon::~Pokemon() {
 
 }
 
@@ -95,6 +99,6 @@ void Pokemon::setStatus(Status newStatus) {
     status = newStatus;
 }
 
-void Pokemon::Attck(Pokemon pokemon, Move move) {
+void Pokemon::Attack(Pokemon pokemon, Move move) {
     
 }
