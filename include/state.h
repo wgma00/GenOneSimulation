@@ -8,7 +8,7 @@ class State {
     private:
         Pokemon team1[6];
         Pokemon team2[6];
-        BigDecimal prob;
+        BigDecimal prob; // placeholder for high precision class
 
     public:
         State();
