@@ -1,6 +1,7 @@
-#include "pokedata.h"
 #ifndef POKEMON_H
 #define POKEMON_H
+#include <string>
+#include "pokedata.h"
 
 class Pokemon {
     private:
@@ -43,6 +44,8 @@ class Pokemon {
         void setStatus(Status newStatus);
 
         void Attack(Pokemon pokemon, Move move);
+        std::string ToString();
+
 };
 
 #endif

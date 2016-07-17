@@ -104,3 +104,7 @@ void Pokemon::setStatus(Status newStatus) {
 void Pokemon::Attack(Pokemon pokemon, Move move) {
     
 }
+
+std::string Pokemon::ToString() {
+
+}
