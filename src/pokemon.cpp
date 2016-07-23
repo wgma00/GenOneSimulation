@@ -21,6 +21,22 @@ Type Pokemon::type2() {
     return type2;
 }
 
+Move Pokemon::move1() {
+    return moves[0];
+}
+
+Move Pokemon::move2() {
+    return moves[1];
+}
+
+Move Pokemon::move3() {
+    return moves[2];
+}
+
+Move Pokemon::move4() {
+    return moves[3];
+}
+
 int Pokemon::hp() {
     return hp;
 }

@@ -6,7 +6,7 @@
 class Pokemon {
     private:
         Type type1, type2;
-        Move move1, move2, move3, move4;
+        Move moves[4];
         int stats[5];
         int mods[4];
         enum regStat = {HP, ATK, DEF, SPC, SPE};
@@ -16,11 +16,15 @@ class Pokemon {
 
     public:
         Pokemon();
-        Pokemon(Type *types, Move moves*, int *stats, int *mods, Status status);
+        Pokemon(Type *types, Move *moves, int *stats, int *mods, Status status);
         ~Pokemon();
 
         Type type1();
         Type type2();
+        Move move1();
+        Move move2();
+        Move move3();
+        Move move4();
         int hp();
         int atk();
         int def();
@@ -32,6 +36,10 @@ class Pokemon {
 
         void setType1(Type newType);
         void setType2(Type newType);
+        void setMove1(Move newMove);
+        void setMove2(Move newMove);
+        void setMove3(Move newMove);
+        void setMove4(Move newMove);
         void setHP(int newHP);
         void setAtk(int newAtk);
         void setDef(int newDef);
