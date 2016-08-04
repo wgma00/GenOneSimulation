@@ -7,10 +7,10 @@ Pokemon::Pokemon(std::vector<Type*> types, std::vector<Move*> moves,
     status_ = status;
 
     for (int i = 0; i < 5; i++) {
-        types_.at(std::min(i, 1)) = types.at(std::min(i, 2));
-        moves_.at(std::min(i, 3)) = moves.at(std::min(i, 3));
-        mods_.at(std::min(i, 3)) = mods.at(std::min(i, 3));
-        stats_.at(std::min(i, 4)) = stats.at(std::min(i, 4));
+        types_.at(std::min(i, 1)) = types->at(std::min(i, 2));
+        moves_.at(std::min(i, 3)) = moves->at(std::min(i, 3));
+        mods_.at(std::min(i, 3)) = mods->at(std::min(i, 3));
+        stats_.at(std::min(i, 4)) = stats->at(std::min(i, 4));
     }
 }
 
