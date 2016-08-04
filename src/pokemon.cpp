@@ -1,8 +1,5 @@
 #include "pokemon.h"
-
-Pokemon::Pokemon() {
-
-}
+#include <vector>
 
 Pokemon::Pokemon(Type *types, Move *moves, int *stats, int *mods,
         Status status) {
