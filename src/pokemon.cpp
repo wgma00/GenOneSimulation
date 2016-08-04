@@ -1,8 +1,8 @@
 #include "pokemon.h"
 #include <vector>
 
-Pokemon::Pokemon(Type *types, Move *moves, int *stats, int *mods,
-        Status status) {
+Pokemon::Pokemon(std::vector<Type*> types, std::vector<Move*> moves,
+        std::vector<int*> stats, std::vector<int*> mods, Status status) {
 
 }
 
@@ -11,107 +11,139 @@ Pokemon::~Pokemon() {
 }
 
 Type Pokemon::type1() {
-    return type1;
+    return types_.at(typeOrder.TYPE1);
 }
 
 Type Pokemon::type2() {
-    return type2;
+    return types_.at(typeOrder.TYPE2);
 }
 
 Move Pokemon::move1() {
-    return moves[0];
+    return moves_.at(moveOrder.MOVE1);
 }
 
 Move Pokemon::move2() {
-    return moves[1];
+    return moves_.at(moveOrder.MOVE2);
 }
 
 Move Pokemon::move3() {
-    return moves[2];
+    return moves_.at(moveOrder.MOVE3);
 }
 
 Move Pokemon::move4() {
-    return moves[3];
+    return moves_.at(moveOrder.MOVE4);
 }
 
 int Pokemon::hp() {
-    return hp;
+    return stats_.at(regStat.HP);
 }
 
 int Pokemon::atk() {
-    return atk;
+    return stats_.at(regStat.ATK);
 }
 
 int Pokemon::def() {
-    return def;
+    return stats_.at(regStat.DEF);
 }
 
 int Pokemon::spc() {
-    return spc;
+    return stats_.at(regStat.SPC);
 }
 
 int Pokemon::spe() {
-    return spe;
+    return stats_.at(regStat.SPE);
 }
 
-int *Pokemon::mods() {
-    return mods;
+int Pokemon::atkmod() {
+    return mods_.at(modStat.ATK)
+}
+
+int Pokemon::defmod() {
+    return mods_.at(modStat.DEF);
+}
+
+int Pokemon::spcmod() {
+    return mods_.at(modStat.SPC);
+}
+
+int Pokemon::spemod() {
+    return mods_.at(modStat.SPE);
 }
 
 Status Pokemon::status() {
-    return status;
+    return status_;
 }
 
 bool Pokemon::confused() {
-    return isConfused;
+    return isConfused_;
 }
 
 void Pokemon::setType1(Type newType) {
-    type1 = newType;
+    types_.at(typeOrder.TYPE1) = newType;
 }
 
 void Pokemon::setType2(Type newType) {
-    type2 = newType;
+    types_.at(typeOrder.TYPE2) = newType;
+}
+
+void Pokemon::setMove1(Move newMove) {
+    moves_.at(moveOrder.MOVE1) = newMove;
+}
+
+void Pokemon::setMove2(Move newMove) {
+    moves_.at(moveOrder.MOVE2) = newMove;
+}
+
+void Pokemon::setMove3(Move newMove) {
+    moves_.at(moveOrder.MOVE3) = newMove;
+}
+
+void Pokemon::setMove4(Move newMove) {
+    moves_.at(moveOrder.MOVE4) = newMove;
 }
 
 void Pokemon::setHP(int newHP) {
-    stats[regStat.HP] = newHP;
+    stats_.at(regStat.HP) = newHP;
 }
 
 void Pokemon::setAtk(int newAtk) {
-    stats[regStat.ATK] = newHP;
+    stats_.at(regStat.ATK) = newAtk;
 }
 
 void Pokemon::setDef(int newDef) {
-    stats[regStat.DEF] = newHP;
+    stats_.at(regStat.DEF) = newDef;
 }
 
 void Pokemon::setSpc(int newSpc) {
-    stats[regStat.SPC] = newHP;
+    stats_.at(regStat.SPC) = newSpc;
 }
 
 void Pokemon::setSpe(int newSpe) {
-    stats[regStat.SPE] = newHP;
+    stats_.at(regStat.SPE) = newSpe;
 }
 
-void Pokemon::setAtkMod(int newMod) {
-    stats[modStat.ATK] = newHP;
+void Pokemon::setAtkMod(int newModAtk) {
+    mods_.at(modStat.ATK) = newModAtk;
 }
 
-void Pokemon::setDefMod(int newMod) {
-    stats[modStat.DEF] = newHP;
+void Pokemon::setDefMod(int newModDef) {
+    mods_.at(modStat.DEF) = newModDef;
 }
 
-void Pokemon::setSpcMod(int newMod) {
-    stats[modStat.SPC] = newHP;
+void Pokemon::setSpcMod(int newModSpc) {
+    mods_.at(modStat.SPC) = newModSpc;
 }
 
-void Pokemon::setSpeMod(int newMod) {
-    stats[modStat.SPE] = newHP;
+void Pokemon::setSpeMod(int newModSpe) {
+    mods_.at(modStat.SPE) = newModSpe;
 }
 
 void Pokemon::setStatus(Status newStatus) {
-    status = newStatus;
+    status_ = newStatus;
+}
+
+void Pokemon::setConfusion(bool confusion) {
+    isConfused_ = confusion;
 }
 
 void Pokemon::Attack(Pokemon pokemon, Move move) {

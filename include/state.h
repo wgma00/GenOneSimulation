@@ -7,13 +7,12 @@
 
 class State {
     private:
-        std::vector<Pokemon> team1(6);
-        std::vector<Pokemon> team2(6);
+        std::vector<Pokemon> team1_(6);
+        std::vector<Pokemon> team2_(6);
         //BigDecimal prob; placeholder for high precision class
 
     public:
-        State();
-        State(Pokemon *team1, Pokemon *team2);
+        State(std::vector<Pokemon*> team1, std::vector<Pokemon*> team2);
         ~State();
 
         std::vector<Pokemon> team1();

@@ -7,18 +7,20 @@
 
 class Pokemon {
     private:
-        Type type1, type2;
-        std::vector<Move> moves(4);
-        std::vector<int> stats(5);
-        std::vector<int> mods(4);
+        std::vector<Type> types_(2);
+        std::vector<Move> moves_(4);
+        std::vector<int> stats_(5);
+        std::vector<int> mods_(4);
+        enum typeOrder = {TYPE1, TYPE2};
+        enum moveOrder = {MOVE1, MOVE2, MOVE3, MOVE4};
         enum regStat = {HP, ATK, DEF, SPC, SPE};
         enum modStat = {ATK, DEF, SPC, SPE};
-        Status status;
-        bool isConfused;
+        Status status_;
+        bool isConfused_ = false;
 
     public:
-        Pokemon();
-        Pokemon(Type *types, Move *moves, int *stats, int *mods, Status status);
+        Pokemon(std::vector<Type*> types, std::vector<Move*> moves,
+                std::vector<int*> stats, std::vector<int*> mods, Status status);
         ~Pokemon();
 
         Type type1();
@@ -32,7 +34,10 @@ class Pokemon {
         int def();
         int spc();
         int spe();
-        std::vector<int> mods();
+        int atkmod();
+        int defmod();
+        int spcmod();
+        int spemod();
         Status status();
         bool confused();
 
@@ -47,11 +52,12 @@ class Pokemon {
         void setDef(int newDef);
         void setSpc(int newSpc);
         void setSpe(int newSpe);
-        void setAtkMod(int newMod);
-        void setDefMod(int newMod);
-        void setSpcMod(int newMod);
-        void setSpeMod(int newMod);
+        void setAtkMod(int newModAtk);
+        void setDefMod(int newModDef);
+        void setSpcMod(int newModSpc);
+        void setSpeMod(int newModSpe);
         void setStatus(Status newStatus);
+        void setConfusion(bool confusion);
 
         void Attack(Pokemon pokemon, Move move);
         std::string ToString();
