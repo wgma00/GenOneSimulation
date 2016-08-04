@@ -9,8 +9,12 @@ enum Status = {FREEZE, SLEEP, PARALYSIS};
 struct Move {
     int bp;
     int pp;
-    int accuracy;
+    int acc;
     Type type;
+    double freezec; // chance of inflicting freeze status
+    double sleepc; // chance of inflicting sleep status
+    double parac; // chance of inflicting paralysis status
+    double confusec; // chance of confusion
 };
 
 double typeChart[16][16] = {
