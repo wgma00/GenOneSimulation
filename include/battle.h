@@ -12,6 +12,6 @@ int getBaseDamage(Move move, Pokemon pokemon);
 
 bool isPhysical(Move move);
 
-bool isNeutral();
+bool isNeutral(Move move);
 
 #endif
