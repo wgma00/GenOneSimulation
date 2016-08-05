@@ -59,9 +59,7 @@ class Pokemon {
         void setStatus(Status newStatus);
         void setConfusion(bool confusion);
 
-        void Attack(Pokemon pokemon, Move move);
         std::string ToString();
-
 };
 
 #endif

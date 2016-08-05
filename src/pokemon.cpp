@@ -154,10 +154,6 @@ void Pokemon::setConfusion(bool confusion) {
     isConfused_ = confusion;
 }
 
-void Pokemon::Attack(Pokemon pokemon, Move move) {
-    
-}
-
 std::string Pokemon::ToString() {
 
 }
