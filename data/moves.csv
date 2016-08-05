@@ -6,19 +6,19 @@ amnesia, 100, 0, status, 20, true, stat_boost, none, +2spd, none, psychic
 rest, 100, 0, status, 10, true, heal, none, none, full_health, psychic
 thunderwave, 100, 0, status, 20, false, paralysis, 100, none, none, electric
 surf, 100, 90, attack, 15,  none, none, none, none, none, water
-selfdestruct, 100, 200, attack, 5, true, death, 100, none, none, normal
-counter,  100, 0, attack, 20, none, none, none, none, none, fighting
+selfdestruct, 100, 200, special, 5, true|false, death|stat_drop, 100|100,-2def, none, normal
+counter,  100, 0, special, 20, none, none, none, none, none, fighting
 hyperbeam, 90, 150, attack, 5, true, immobalized, 100, none, none, normal
-thunderbolt, 100, 95, attack, 15, false, paralysis, 10, electric 
+thunderbolt, 100, 95, attack, 15, false, paralysis, 10, none, none, electric 
 drillpeck, 100, 80, attack, 20, none, none, none, none, none, none, flying
 agility, 100, 0, status, 30, true, stat_boost, none, +2spe, none, psychic
 psychic, 100, 90, attack, 10, false, stat_drop, -spd, -spe, none, psychic
 recover, 100, 0, status, 10, true, heal, 100, none, half_health, normal
 sing, 55, 0, status, 15, false, sleep, 100, none, none, normal
 confuseray, 100, 0, status, 10, false, confusion, 100, none, none, psychic
-doublekick, 100, 30, attack, 30, none, none, none, none, none, fighting
+doublekick, 100, 30, special, 30, none, none, none, none, none, fighting
 pinmissile, 95, 25, attack, 20, none, none, none, none, none, bug
-explosion, 100, 250, attack, 5, true, death, 100, false, false, normal
+explosion, 100, 250, special, 5, true, death, 100, false, false, normal
 hypnosis, 60, 0, status, 20, false, sleep, 100, none, none, psychic
 nightshade, 100, 100, attack, 15, none, none, none, none, none, ghost
 sleeppowder, 75, 0, status, 15, false, slp, 100, none, none, grass
@@ -27,10 +27,6 @@ doubleedge, 100, 120, attack, 15, true, recoil, 100, none, none, normal
 megadrain, 100, 40, attack, 15, true, heal, 100, none, damage_heal, grass
 icebeam, 100, 90, attack, 10, false, freeze, 10, none, none, ice
 reflect, 100, 0, status, 20, true, stat_boost, 100, +2def, none, psychic
-seismictoss, 100, 100, attack , 20, none, none, none, none, none, fighting
-clamp, 85, 35, attack, 15, false, flinch, 100, none, none, water
+seismictoss, 100, 100, special , 20, none, none, none, none, none, fighting
+clamp, 85, 35, special, 15, false, flinch, 100, none, none, water
 softboiled, 100, 0, status, 10, true, heal, 100, none, half_health, normal
-
-name, accuracy, base_power, category(attach move or status), pp, self_inflected_status, volatile_status(frz, brn, confusion), volatile_status_chance, boosts, healing, type
-mental note: - self destruct halves defense, add another variable for this
-             - counter is a special case
