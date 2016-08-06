@@ -16,18 +16,18 @@ int getDamage(Move move, Pokemon poke1, Pokemon poke2, bool crit, double roll) {
 double getDamage(Move move, Pokemon poke1, Pokemon poke2, bool STAB) {
     double boost = STAB ? 1.5 : 1;
     bool phys = isPhysical(move);
-    int atk = phys ? poke1.atk : poke1.spc;
-    int def = phys ? poke2.def : poke2.spc;
-    int atkmod, defmod;
+    double atk = phys ? poke1.atk : poke1.spc;
+    double def = phys ? poke2.def : poke2.spc;
+    double atkmod, defmod;
     double effect = getTypeEffect(move, poke2.type1())
             * getTypeEffect(move, poke2.type2());
 
     if (phys) {
-        atkmod = poke1.atkmod() > -1 ? (atkmod + 2) / 2.0 : 2.0 / (2 - atkmod);
-        defmod = poke2.defmod() > -1 ? (defmod + 2) / 2.0 : 2.0 / (2 - defmod);
+        atkmod = poke1.atkmod() > -1 ? (atkmod + 2) / 2 : 2 / (2 - atkmod);
+        defmod = poke2.defmod() > -1 ? (defmod + 2) / 2 : 2 / (2 - defmod);
     } else {
-        atkmod = poke1.spcmod() > -1 ? (atkmod + 2) / 2.0 : 2.0 / (2 - atkmod);
-        defmod = poke2.spcmod() > -1 ? (defmod + 2) / 2.0 : 2.0 / (2 - defmod);
+        atkmod = poke1.spcmod() > -1 ? (atkmod + 2) / 2 : 2 / (2 - atkmod);
+        defmod = poke2.spcmod() > -1 ? (defmod + 2) / 2 : 2 / (2 - defmod);
     }
 
     atk *= atkmod;
