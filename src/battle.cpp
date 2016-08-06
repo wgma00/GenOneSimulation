@@ -6,13 +6,15 @@ double getTypeEffect(Move move, Type type) {
     return typeChart[move.type, type];
 }
 
-int getDamage(Move move, Pokemon pokemon, bool STAB, bool crit, double roll) {
+int getDamage(Move move, Pokemon poke1,
+        Pokemon poke2, bool crit, double roll) {
+    bool STAB = isSTAB(poke1, move);
     int critboost = crit ? 2 : 1;
 
-    return std::floor(getBaseDamage(move, pokemon, STAB) * critboost * roll);
+    return std::floor(getDamage(move, poke1, poke2, STAB) * critboost * roll);
 }
 
-double getBaseDamage(Move move, Pokemon pokemon, bool STAB) {
+double getDamage(Move move, Pokemon poke1, Pokemon poke2, bool STAB) {
     double boost = STAB ? 1.5 : 1;
     int atk = 1; // placeholder
     int def = 1; // placeholder
