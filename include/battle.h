@@ -10,8 +10,6 @@ int getDamage(Move move, Pokemon poke1, Pokemon poke2, bool STAB);
 
 bool isPhysical(Move move);
 
-bool isNeutral(Move move);
-
 bool isSTAB(Pokemon pokemon, Move move);
 
 #endif

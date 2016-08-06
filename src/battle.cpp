@@ -30,10 +30,6 @@ bool isPhysical(Move move) {
     return move.type < 8; // 8 comes from the order of types in the type enum
 }
 
-bool isNeutral(Move move) {
-    return move.type == Type.NEUTRAL;
-}
-
 bool isSTAB(Pokemon pokemon, Move move) {
     return pokemon.type1() == move.type || pokemon.type2() == move.type;
 }
