@@ -1,26 +1,27 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
-#include "pokedata.h"
+#include "../include/move.h"
+#include "../include/pokedata.h"
 #include <string>
 #include <vector>
 
 class Pokemon {
     private:
-        std::vector<Type> types_(2);
-        std::vector<Move> moves_(4);
-        std::vector<int> stats_(5);
-        std::vector<int> mods_(4);
-        enum typeOrder = {TYPE1, TYPE2};
-        enum moveOrder = {MOVE1, MOVE2, MOVE3, MOVE4};
-        enum regStat = {HP, ATK, DEF, SPC, SPE};
-        enum modStat = {ATK, DEF, SPC, SPE};
-        Status status_;
-        bool isConfused_ = false;
+        std::vector<Type> types;
+        std::vector<Move> moves;
+        std::vector<int> stats;
+        std::vector<int> mods;
+        enum typeOrder {TYPE1, TYPE2};
+        enum moveOrder {MOVE1, MOVE2, MOVE3, MOVE4};
+        enum regStat {HP, ATK, DEF, SPC, SPE};
+        enum modStat {MODATK, MODDEF, MODSPC, MODSPE};
+        Status condition;
+        bool isConfused = false;
 
     public:
-        Pokemon(std::vector<Type*> types, std::vector<Move*> moves,
-                std::vector<int*> stats, std::vector<int*> mods, Status status);
+        Pokemon(std::vector<Type> types, std::vector<Move> moves,
+                std::vector<int> stats, std::vector<int> mods, Status status);
         ~Pokemon();
 
         Type type1();

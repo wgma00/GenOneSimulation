@@ -1,6 +1,9 @@
 #ifndef BATTLE_H
 #define BATTLE_h
-#include "pokedata.h"
+
+#include "../include/move.h"
+#include "../include/pokedata.h"
+#include "../include/pokemon.h"
 
 double getTypeEffect(Move move, Type type);
 
