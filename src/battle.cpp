@@ -1,5 +1,5 @@
 #include "battle.h"
-#include <algorithm> // Will use for std::min and std::max
+#include <algorithm>
 #include <cmath>
 
 double getTypeEffect(Move move, Type type) {
