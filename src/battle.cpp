@@ -16,8 +16,9 @@ int getDamage(Move move, Pokemon poke1,
 
 double getDamage(Move move, Pokemon poke1, Pokemon poke2, bool STAB) {
     double boost = STAB ? 1.5 : 1;
-    int atk = 1; // placeholder
-    int def = 1; // placeholder
+    bool phys = isPhysical(move);
+    int atk = phys ? poke1.atk : poke1.spc;
+    int def = phys ? poke2.def : poke2.spc;
     double effect = getTypeEffect(move, pokemon.type1())
             * getTypeEffect(move, pokemon.type2());
 
