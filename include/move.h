@@ -7,6 +7,7 @@
 #include<sstream>
 #include<cstdlib>
 #include<iostream>
+#include "pokedata.h"
 
 struct Move {
 
@@ -30,7 +31,7 @@ struct Move {
         std::string volatile_status_chance;
         std::string boosts;
         std::string heal;
-        std::string type;
+        Type type;
     public:
         Move();
         Move(std::string data);
@@ -66,8 +67,8 @@ struct Move {
         std::string get_heal();
         void set_heal(std::string heal);
 
-        std::string get_type();
-        void set_type(std::string type);
+        Type get_type();
+        void set_type(Type type);
 
 };
 

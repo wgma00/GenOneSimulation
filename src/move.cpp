@@ -18,10 +18,12 @@ Move::Move(std::string data){
             case 7:this->set_volatile_status_chance(str); break; 
             case 8:this->set_boosts(str); break; 
             case 9:this->set_heal(str); break; 
-            case 10:this->set_type(str); break; 
+            case 10:this->set_type(to_move(str)); break; 
         } 
     }
 }
+
+
 Move::~Move(){
 
 }
@@ -97,9 +99,9 @@ void Move::set_heal(std::string heal){
     this->heal = heal;
 }
 
-std::string Move::get_type(){
+Type Move::get_type(){
     return this->type;
 }
-void Move::set_type(std::string type){
+void Move::set_type(Type type){
     this->type = type;
 }
