@@ -25,3 +25,21 @@ double typeChart[16][16] = {
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 
 #endif
+Type to_move(std::string str){
+    if(str == "normal")return NORMAL;
+    if(str == "fighting")return FIGHTING;
+    if(str == "flying")return FLYING;
+    if(str == "poison")return POISON;
+    if(str == "ground")return GROUND;
+    if(str == "rock")return ROCK;
+    if(str == "bug")return BUG;
+    if(str == "ghost")return GHOST;
+    if(str == "fire")return FIRE;
+    if(str == "water")return WATER;
+    if(str == "grass")return GRASS;
+    if(str == "electric")return ELECTRIC;
+    if(str == "psychic")return PSYCHIC;
+    if(str == "ice")return ICE;
+    if(str == "dragon")return DRAGON;
+    return "NULLPTR - to_move"
+}
