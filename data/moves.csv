@@ -1,3 +1,4 @@
+name, accuracy, base_power, category(attach move, status, special), pp, self_inflected_status, volatile_status(frz, brn, confusion), volatile_status_chance, boosts, healing, type
 earthquake,100,100,attack,10,none,none,none,none,none,ground
 bodyslam,100,85,attack,15,none,paralysis,30,none,none,normal
 rockslide,90,75,attack,10,none,flinch,30,none,none,rock
