@@ -4,7 +4,7 @@
 enum Type {NORMAL, FIGHTING, FLYING, POISON, GROUND, ROCK, BUG, GHOST, FIRE,
         WATER, GRASS, ELECTRIC, PSYCHIC, ICE, DRAGON, NEUTRAL};
 
-enum Status {FREEZE, SLEEP, PARALYSIS};
+enum Status {FREEZE, SLEEP, PARALYSIS, NONE};
 
 double typeChart[16][16] = {
     {1, 1, 1, 1, 1, 0.5, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1},

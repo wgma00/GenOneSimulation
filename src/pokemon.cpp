@@ -5,6 +5,7 @@
 Pokemon::Pokemon(std::vector<Type> types, std::vector<Move> moves,
         std::vector<int> stats, std::vector<int> mods, Status status) {
     this->condition = status;
+    this->currentHP = this->stats.at(0);
 
     for (int i = 0; i < 5; i++) {
         this->types.at(std::min(i, 1)) = types.at(std::min(i, 2));
@@ -42,8 +43,16 @@ Move Pokemon::move4() {
     return this->moves.at(MOVE4);
 }
 
+std::vector<Move> Pokemon::moves() {
+    return this->moves;
+}
+
 int Pokemon::hp() {
     return this->stats.at(HP);
+}
+
+int Pokemon::currentHP() {
+    return this->currentHP;
 }
 
 int Pokemon::atk() {
@@ -86,6 +95,10 @@ bool Pokemon::confused() {
     return this->isConfused;
 }
 
+bool Pokemon::rested() {
+    return this->isRested;
+}
+
 void Pokemon::setType1(Type newType) {
     this->types.at(TYPE1) = newType;
 }
@@ -112,6 +125,10 @@ void Pokemon::setMove4(Move newMove) {
 
 void Pokemon::setHP(int newHP) {
     this->stats.at(HP) = newHP;
+}
+
+void Pokemon::setCurrentHP(int newCurrentHP) {
+    this->currentHP = newCurrentHP;
 }
 
 void Pokemon::setAtk(int newAtk) {
@@ -150,10 +167,10 @@ void Pokemon::setStatus(Status newStatus) {
     this->condition = newStatus;
 }
 
-void Pokemon::setConfusion(bool confusion) {
+void Pokemon::setConfusion(bool newConfusion) {
     this->isConfused = confusion;
 }
 
-std::string Pokemon::ToString() {
-
+void Pokemon::setRested(bool newRested) {
+    this->isRested = newRested;
 }

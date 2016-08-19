@@ -17,7 +17,9 @@ class Pokemon {
         enum regStat {HP, ATK, DEF, SPC, SPE};
         enum modStat {MODATK, MODDEF, MODSPC, MODSPE};
         Status condition;
+        int currentHP;
         bool isConfused = false;
+        bool isRested = false;
 
     public:
         Pokemon(std::vector<Type> types, std::vector<Move> moves,
@@ -30,7 +32,9 @@ class Pokemon {
         Move move2();
         Move move3();
         Move move4();
+        std::vector<Move> moves();
         int hp();
+        int currentHP();
         int atk();
         int def();
         int spc();
@@ -41,6 +45,7 @@ class Pokemon {
         int spemod();
         Status status();
         bool confused();
+        bool rested();
 
         void setType1(Type newType);
         void setType2(Type newType);
@@ -49,6 +54,7 @@ class Pokemon {
         void setMove3(Move newMove);
         void setMove4(Move newMove);
         void setHP(int newHP);
+        void setCurrentHP(int newCurrentHP);
         void setAtk(int newAtk);
         void setDef(int newDef);
         void setSpc(int newSpc);
@@ -58,9 +64,8 @@ class Pokemon {
         void setSpcMod(int newModSpc);
         void setSpeMod(int newModSpe);
         void setStatus(Status newStatus);
-        void setConfusion(bool confusion);
-
-        std::string ToString();
+        void setConfusion(bool newConfusion);
+        void setRested(bool newRested);
 };
 
 #endif

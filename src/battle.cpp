@@ -1,6 +1,8 @@
 #include "../include/battle.h"
 #include <algorithm>
 #include <cmath>
+#include <stdlib.h>
+#include <time.h>
 
 double getTypeEffect(Move move, Type type) {
     return typeChart[move.get_type(), type];
@@ -46,4 +48,23 @@ bool isPhysical(Move move) {
 
 bool isSTAB(Pokemon pokemon, Move move) {
     return pokemon.type1() == move.get_type() || pokemon.type2() == move.get_type();
+}
+
+bool hasValidMove(Pokemon pokemon) {
+    return pokemon.move1().get_pp() + pokemon.move2().get_pp() + 
+            pokemon.move3().get_pp() + pokemon.move4().get_pp() > 0;
+}
+
+bool canMove(Pokemon pokemon) {
+    srand(time(NULL));
+
+    if (pokemon.status() == NONE) {
+        return true;
+    } else if (pokemon.status() == PARALYSIS) {
+        return (rand() % 100) >= 25;
+    } else if (pokemon.status() == SLEEP) {
+        return false;
+    } else {
+        return false;
+    }
 }

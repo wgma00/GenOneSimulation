@@ -15,4 +15,8 @@ bool isPhysical(Move move);
 
 bool isSTAB(Pokemon pokemon, Move move);
 
+bool hasValidMove(Pokemon pokemon);
+
+bool canMove(Pokemon pokemon);
+
 #endif

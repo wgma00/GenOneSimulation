@@ -2,11 +2,11 @@
 #ifndef GENONESIMULATION_INCLUDE_MOVE
 #define GENONESIMULATION_INCLUDE_MOVE
 
-#include<string>
-#include<cstring>
-#include<sstream>
-#include<cstdlib>
-#include<iostream>
+#include <string>
+#include <cstring>
+#include <sstream>
+#include <cstdlib>
+#include <iostream>
 #include "pokedata.h"
 
 struct Move {
