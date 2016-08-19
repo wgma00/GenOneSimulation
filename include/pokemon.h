@@ -20,6 +20,10 @@ class Pokemon {
         int currentHP;
         bool isConfused = false;
         bool isRested = false;
+        int baseSpe;
+        int clampTurns = 0;
+        int sleepTurns = 0;
+        int counterDamage = 0;
 
     public:
         Pokemon(std::vector<Type> types, std::vector<Move> moves,
@@ -46,6 +50,10 @@ class Pokemon {
         Status status();
         bool confused();
         bool rested();
+        int basespe();
+        int clampturns();
+        int sleepturns();
+        int counterdamage();
 
         void setType1(Type newType);
         void setType2(Type newType);
@@ -66,6 +74,10 @@ class Pokemon {
         void setStatus(Status newStatus);
         void setConfusion(bool newConfusion);
         void setRested(bool newRested);
+        void setBaseSpe(int newBaseSpe);
+        void setClampTurns(int newClampTurns);
+        void setSleepTurns(int newSleepTurns);
+        void setCounterDamage(int newCounterDamage);
 };
 
 #endif

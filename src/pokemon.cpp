@@ -3,9 +3,10 @@
 #include <algorithm>
 
 Pokemon::Pokemon(std::vector<Type> types, std::vector<Move> moves,
-        std::vector<int> stats, std::vector<int> mods, Status status) {
+        std::vector<int> stats, std::vector<int> mods, Status statusm int baseSpe) {
     this->condition = status;
     this->currentHP = this->stats.at(0);
+    this->baseSpe = baseSpe;
 
     for (int i = 0; i < 5; i++) {
         this->types.at(std::min(i, 1)) = types.at(std::min(i, 2));
@@ -99,6 +100,22 @@ bool Pokemon::rested() {
     return this->isRested;
 }
 
+int Pokemon::basespe() {
+    return this->baseSpe;
+}
+
+int Pokemon::clampturns() {
+    return this->clampTurns;
+}
+
+int Pokemon::sleepturns() {
+    return this->sleepTurns;
+}
+
+int Pokemon::counterDamage() {
+    return this->counterDamage;
+}
+
 void Pokemon::setType1(Type newType) {
     this->types.at(TYPE1) = newType;
 }
@@ -173,4 +190,20 @@ void Pokemon::setConfusion(bool newConfusion) {
 
 void Pokemon::setRested(bool newRested) {
     this->isRested = newRested;
+}
+
+void Pokemon::setClampTurns(int newClampTurns) {
+    this->clampTurns = newClampTurns;
+}
+
+void Pokemon::setSleepTurns(int newSleepTurns) {
+    this->sleepTurns = newSleepTurns;
+}
+
+void Pokemon::setCounterDamage(int newCounterDamage) {
+    this->counterDamage = newCounterDamage;
+}
+
+void Pokemon::setBaseSpe(int newBaseSpe) {
+    this->baseSpe = newBaseSpe;
 }

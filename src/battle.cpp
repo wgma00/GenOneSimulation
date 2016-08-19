@@ -12,10 +12,10 @@ int getDamage(Move move, Pokemon poke1, Pokemon poke2, bool crit, double roll) {
     bool STAB = isSTAB(poke1, move);
     int critboost = crit ? 2 : 1;
 
-    return std::floor(getDamage(move, poke1, poke2, STAB) * critboost * roll);
+    return std::floor(getDamage(move, poke1, poke2, crit, STAB) * critboost * roll);
 }
 
-double getDamage(Move move, Pokemon poke1, Pokemon poke2, bool STAB) {
+double getDamage(Move move, Pokemon poke1, Pokemon poke2, bool crit, bool STAB) {
     double boost = STAB ? 1.5 : 1;
     bool phys = isPhysical(move);
     double atk = phys ? poke1.atk() : poke1.spc();
@@ -30,6 +30,11 @@ double getDamage(Move move, Pokemon poke1, Pokemon poke2, bool STAB) {
     } else {
         atkmod = poke1.spcmod() > -1 ? (atkmod + 2) / 2 : 2 / (2 - atkmod);
         defmod = poke2.spcmod() > -1 ? (defmod + 2) / 2 : 2 / (2 - defmod);
+    }
+
+    if (crit) {
+        atkmod = 1;
+        defmod = 1;
     }
 
     atk *= atkmod;
@@ -55,7 +60,7 @@ bool hasValidMove(Pokemon pokemon) {
             pokemon.move3().get_pp() + pokemon.move4().get_pp() > 0;
 }
 
-bool canMove(Pokemon pokemon) {
+bool canMove(Pokemon &pokemon) {
     srand(time(NULL));
 
     if (pokemon.status() == NONE) {
@@ -63,7 +68,7 @@ bool canMove(Pokemon pokemon) {
     } else if (pokemon.status() == PARALYSIS) {
         return (rand() % 100) >= 25;
     } else if (pokemon.status() == SLEEP) {
-        return false;
+        return pokemon.sleepturns() == 0;
     } else {
         return false;
     }
