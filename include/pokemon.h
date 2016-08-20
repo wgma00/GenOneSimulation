@@ -20,6 +20,7 @@ class Pokemon {
         int currentHP;
         bool isConfused = false;
         bool isRested = false;
+        bool paraMod = false;
         int baseSpe;
         int clampTurns = 0;
         int sleepTurns = 0;
@@ -50,6 +51,7 @@ class Pokemon {
         Status status();
         bool confused();
         bool rested();
+        bool paramod();
         int basespe();
         int clampturns();
         int sleepturns();
@@ -74,6 +76,7 @@ class Pokemon {
         void setStatus(Status newStatus);
         void setConfusion(bool newConfusion);
         void setRested(bool newRested);
+        void setParaMod(bool newParaMod);
         void setBaseSpe(int newBaseSpe);
         void setClampTurns(int newClampTurns);
         void setSleepTurns(int newSleepTurns);

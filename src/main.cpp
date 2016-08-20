@@ -11,24 +11,47 @@
 #include <vector>
 
 double battle(std::vector<Pokemon> team1, std::vector<Pokemon> team2) {
-    double spe1 = team1[0].spe();
-    double spe2 = team2[0].spe();
-    double spemod1;
-    double spemod2;
+    while (team1.size() > 0 && team2.size() > 0) {
+        double spe1 = team1[0].spe();
+        double spe2 = team2[0].spe();
+        double spemod1;
+        double spemod2;
+        int spemod;
 
-    if (team1[0].status() == PARALYSIS)
+        if (team1[0].paramod()) {
+            spemod = team1[0].spemod();
+            spemod1 = spemod > -1 ? (spemod + 2) / 4 : 2 / (4 - atkmod);
+        } else {
+            spemod = team1[0].spemod();
+            spemod1 = spemod > -1 ? (spemod + 2) / 2 : 2 / (2 - atkmod);
+        }
+        if (team2[0].paramod()) {
+            spemod = team2[0].spemod();
+            spemod2 = spemod > -1 ? (spemod + 2) / 4 : 2 / (4 - atkmod);
+        } else {
+            spemod = team2[0].spemod();
+            spemod2 = spemod > -1 ? (spemod + 2) / 2 : 2 / (2 - atkmod);
+        }
 
-    if (team1[0].spe() > team2[0].spe()) {
-        exActions(team1, team2);
-    } else if (team1[0].spe() < team2[0].spe()) {
-        exActions(team2, team1);
-    } else {
-        srand(time(NULL));
-        int coinflip = rand() % 2;
-        coinflip == 1 ? exActions(team1, team2) : exActions(team2, team1);
+        spe1 *= spemod1;
+        spe1 = std::floor(spe1);
+        spe1 = spemod1 >= 1 ? std::min(spe1, 999.) : std::max(spe2, 1.);
+        spe2 *= spemod2;
+        spe2 = std::floor(spe2);
+        spe2 = spemod2 >= 1 ? std::min(spe2, 999.) : std::max(spe2, 1.);
+
+        if (spe1 > spe2) {
+            exActions(team1, team2);
+        } else if (spe1 < spe2) {
+            exActions(team2, team1);
+        } else {
+            srand(time(NULL));
+            int coinflip = rand() % 2;
+            coinflip == 1 ? exActions(team1, team2) : exActions(team2, team1);
+        }
     }
 
-    return 0.0;
+    return team1.size() > 0 ? 1.0 : 0.0;
 }
 
 void exActions(std::vector<Pokemon> &first, std::vector<Pokemon> &second) {
@@ -86,6 +109,9 @@ void exActions(std::vector<Pokemon> &first, std::vector<Pokemon> &second) {
         if (choice == 0) {
             choice = (rand() % (first.size() - 1)) + 1;
         }
+        if (first[0].status() != PARALYSIS && first[0].paramod()) {
+            first[0].setParaMod(false);
+        }
 
         Pokemon temp = first[0];
         first[0] = first[choice];
@@ -141,6 +167,9 @@ void exActions(std::vector<Pokemon> &first, std::vector<Pokemon> &second) {
 
         if (choice == 0) {
             choice = (rand() % (second.size() - 1)) + 1;
+        }
+        if (second[0].status() != PARALYSIS && second[0].paramod()) {
+            second[0].setParaMod(false);
         }
 
         Pokemon temp = second[0];

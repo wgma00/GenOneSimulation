@@ -100,6 +100,10 @@ bool Pokemon::rested() {
     return this->isRested;
 }
 
+bool Pokemon::paramod() {
+    return this->paraMod;
+}
+
 int Pokemon::basespe() {
     return this->baseSpe;
 }
@@ -190,6 +194,10 @@ void Pokemon::setConfusion(bool newConfusion) {
 
 void Pokemon::setRested(bool newRested) {
     this->isRested = newRested;
+}
+
+void Pokemon::setParaMod(bool newParaMod) {
+    this->paraMod = newParaMod;
 }
 
 void Pokemon::setClampTurns(int newClampTurns) {
