@@ -19,6 +19,7 @@ class Pokemon {
         Status condition;
         int currentHP;
         bool isConfused = false;
+        Pkmn name;
         bool isRested = false;
         bool paraMod = false;
         int baseSpe;
@@ -27,7 +28,7 @@ class Pokemon {
         int counterDamage = 0;
 
     public:
-        Pokemon(std::vector<Type> types, std::vector<Move> moves,
+        Pokemon(Pkmn name, std::vector<Type> types, std::vector<Move> moves,
                 std::vector<int> stats, std::vector<int> mods, Status status);
         ~Pokemon();
 
@@ -49,6 +50,7 @@ class Pokemon {
         int spcmod();
         int spemod();
         Status status();
+        Pkmn name();
         bool confused();
         bool rested();
         bool paramod();
@@ -74,6 +76,7 @@ class Pokemon {
         void setSpcMod(int newModSpc);
         void setSpeMod(int newModSpe);
         void setStatus(Status newStatus);
+        void setName(Pkmn name);
         void setConfusion(bool newConfusion);
         void setRested(bool newRested);
         void setParaMod(bool newParaMod);

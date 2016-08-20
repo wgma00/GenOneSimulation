@@ -2,12 +2,12 @@
 #include <vector>
 #include <algorithm>
 
-Pokemon::Pokemon(std::vector<Type> types, std::vector<Move> moves,
-        std::vector<int> stats, std::vector<int> mods, Status statusm int baseSpe) {
+Pokemon::Pokemon(Pkmn name, std::vector<Type> types, std::vector<Move> moves,
+        std::vector<int> stats, std::vector<int> mods, Status status, int baseSpe) {
     this->condition = status;
+    this->name = name;
     this->currentHP = this->stats.at(0);
     this->baseSpe = baseSpe;
-
     for (int i = 0; i < 5; i++) {
         this->types.at(std::min(i, 1)) = types.at(std::min(i, 2));
         this->moves.at(std::min(i, 3)) = moves.at(std::min(i, 3));
@@ -90,6 +90,10 @@ int Pokemon::spemod() {
 
 Status Pokemon::status() {
     return this->condition;
+}
+
+Pkmn Pokemon::name(){
+    return this->name;
 }
 
 bool Pokemon::confused() {
@@ -190,6 +194,10 @@ void Pokemon::setStatus(Status newStatus) {
 
 void Pokemon::setConfusion(bool newConfusion) {
     this->isConfused = confusion;
+}
+
+void Pokemon::setName(Pkmn name){
+    this->name = name;
 }
 
 void Pokemon::setRested(bool newRested) {

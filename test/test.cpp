@@ -10,6 +10,8 @@ struct TestMoveParsing{
         in.open("../data/moves.csv");
         std::vector<Move*>ret;
         std::string str;
+        //remove redundant line at beginning of file
+        getline(in,str);
         for(int i = 0;i < 3;i++){
             in >> str;
             ret.push_back(new Move(str));
@@ -27,6 +29,8 @@ struct TestMoveParsing{
         in.open("../data/moves.csv");
         std::vector<Move*>ret;
         std::string str;
+        //remove redundant line at begining of file
+        getline(in, str);
         for(int i = 0;i < 3;i++){
             in >> str;
             ret.push_back(new Move(str));
