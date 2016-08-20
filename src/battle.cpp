@@ -1,6 +1,8 @@
 #include "../include/battle.h"
 #include <algorithm>
 #include <cmath>
+#include <stdlib.h>
+#include <time.h>
 
 double getTypeEffect(Move move, Type type) {
     return typeChart[move.get_type(), type];
@@ -10,10 +12,10 @@ int getDamage(Move move, Pokemon poke1, Pokemon poke2, bool crit, double roll) {
     bool STAB = isSTAB(poke1, move);
     int critboost = crit ? 2 : 1;
 
-    return std::floor(getDamage(move, poke1, poke2, STAB) * critboost * roll);
+    return std::floor(getDamage(move, poke1, poke2, crit, STAB) * critboost * roll);
 }
 
-double getDamage(Move move, Pokemon poke1, Pokemon poke2, bool STAB) {
+double getDamage(Move move, Pokemon poke1, Pokemon poke2, bool crit, bool STAB) {
     double boost = STAB ? 1.5 : 1;
     bool phys = isPhysical(move);
     double atk = phys ? poke1.atk() : poke1.spc();
@@ -28,6 +30,11 @@ double getDamage(Move move, Pokemon poke1, Pokemon poke2, bool STAB) {
     } else {
         atkmod = poke1.spcmod() > -1 ? (atkmod + 2) / 2 : 2 / (2 - atkmod);
         defmod = poke2.spcmod() > -1 ? (defmod + 2) / 2 : 2 / (2 - defmod);
+    }
+
+    if (crit) {
+        atkmod = 1;
+        defmod = 1;
     }
 
     atk *= atkmod;
@@ -46,4 +53,33 @@ bool isPhysical(Move move) {
 
 bool isSTAB(Pokemon pokemon, Move move) {
     return pokemon.type1() == move.get_type() || pokemon.type2() == move.get_type();
+}
+
+bool hasValidMove(Pokemon pokemon) {
+    return pokemon.move1().get_pp() + pokemon.move2().get_pp() + 
+            pokemon.move3().get_pp() + pokemon.move4().get_pp() > 0;
+}
+
+bool canMove(Pokemon &pokemon) {
+    srand(time(NULL));
+
+    if (pokemon.status() == NONE) {
+        return true;
+    } else if (pokemon.status() == PARALYSIS) {
+        return (rand() % 100) >= 25;
+    } else if (pokemon.status() == SLEEP) {
+        if (pokemon.sleepturns() == 0) {
+            return true;
+        }
+
+        pokemon.setSleepTurns(pokemon.sleepturns() - 1);
+
+        if (pokemon.sleepturns == 0) {
+            pokemon.setStatus(NONE);
+        }
+
+        return false;
+    } else {
+        return false;
+    }
 }

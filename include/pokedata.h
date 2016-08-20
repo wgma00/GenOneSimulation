@@ -8,7 +8,7 @@ enum Pkmn {ALAKAZAM, CLOYSTER, CHANSEY, EXEGGUTOR, GENGAR, GOLEM, JOLTEON,
               JYNX, LAPRAS, RHYDON, SLOWBRO, SNORLAX, STARMIE, TAUROS, ZAPDOS,
               NULL_PKMN}
 
-enum Status {FREEZE, SLEEP, PARALYSIS};
+enum Status {NONE, FREEZE, SLEEP, PARALYSIS};
 
 double typeChart[16][16] = {
     {1, 1, 1, 1, 1, 0.5, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1},

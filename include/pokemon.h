@@ -17,8 +17,15 @@ class Pokemon {
         enum regStat {HP, ATK, DEF, SPC, SPE};
         enum modStat {MODATK, MODDEF, MODSPC, MODSPE};
         Status condition;
+        int currentHP;
         bool isConfused = false;
         Pkmn name;
+        bool isRested = false;
+        bool paraMod = false;
+        int baseSpe;
+        int clampTurns = 0;
+        int sleepTurns = 0;
+        int counterDamage = 0;
 
     public:
         Pokemon(std::vector<Type> types, std::vector<Move> moves,
@@ -31,7 +38,9 @@ class Pokemon {
         Move move2();
         Move move3();
         Move move4();
+        std::vector<Move> moves();
         int hp();
+        int currentHP();
         int atk();
         int def();
         int spc();
@@ -43,6 +52,12 @@ class Pokemon {
         Status status();
         Pkmn name();
         bool confused();
+        bool rested();
+        bool paramod();
+        int basespe();
+        int clampturns();
+        int sleepturns();
+        int counterdamage();
 
         void setType1(Type newType);
         void setType2(Type newType);
@@ -51,6 +66,7 @@ class Pokemon {
         void setMove3(Move newMove);
         void setMove4(Move newMove);
         void setHP(int newHP);
+        void setCurrentHP(int newCurrentHP);
         void setAtk(int newAtk);
         void setDef(int newDef);
         void setSpc(int newSpc);
@@ -60,10 +76,15 @@ class Pokemon {
         void setSpcMod(int newModSpc);
         void setSpeMod(int newModSpe);
         void setStatus(Status newStatus);
-        void setConfusion(bool confusion);
         void setName(Pkmn name);
 
-        std::string ToString();
+        void setConfusion(bool newConfusion);
+        void setRested(bool newRested);
+        void setParaMod(bool newParaMod);
+        void setBaseSpe(int newBaseSpe);
+        void setClampTurns(int newClampTurns);
+        void setSleepTurns(int newSleepTurns);
+        void setCounterDamage(int newCounterDamage);
 };
 
 #endif
