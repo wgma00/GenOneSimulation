@@ -16,10 +16,10 @@ class Pokemon {
         enum moveOrder {MOVE1, MOVE2, MOVE3, MOVE4};
         enum regStat {HP, ATK, DEF, SPC, SPE};
         enum modStat {MODATK, MODDEF, MODSPC, MODSPE};
+        Pkmn name;
         Status condition;
         int currentHP;
         bool isConfused = false;
-        Pkmn name;
         bool isRested = false;
         bool paraMod = false;
         int baseSpe;
