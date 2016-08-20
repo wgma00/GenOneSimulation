@@ -6,7 +6,7 @@ enum Type {NORMAL, FIGHTING, FLYING, POISON, GROUND, ROCK, BUG, GHOST, FIRE,
 
 enum Pkmn {ALAKAZAM, CLOYSTER, CHANSEY, EXEGGUTOR, GENGAR, GOLEM, JOLTEON,
               JYNX, LAPRAS, RHYDON, SLOWBRO, SNORLAX, STARMIE, TAUROS, ZAPDOS,
-              NULL_PKMN}
+              NULL_PKMN};
 
 enum Status {NONE, FREEZE, SLEEP, PARALYSIS};
 
@@ -48,7 +48,7 @@ Type to_type(std::string str){
     return NEUTRAL; 
 }
 
-Pokemon to_pokemon(std::string str){
+Pkmn to_pokemon(std::string str){
     if(str == "alakazam") return ALAKAZAM;
     if(str == "cloyster") return CLOYSTER;
     if(str == "chansey") return CHANSEY;
