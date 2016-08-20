@@ -2,9 +2,10 @@
 #include <vector>
 #include <algorithm>
 
-Pokemon::Pokemon(std::vector<Type> types, std::vector<Move> moves,
+Pokemon::Pokemon(Pkmn name, std::vector<Type> types, std::vector<Move> moves,
         std::vector<int> stats, std::vector<int> mods, Status status) {
     this->condition = status;
+    this->name = name;
 
     for (int i = 0; i < 5; i++) {
         this->types.at(std::min(i, 1)) = types.at(std::min(i, 2));
@@ -82,6 +83,10 @@ Status Pokemon::status() {
     return this->condition;
 }
 
+Pkmn Pokemon::name(){
+    return this->name;
+}
+
 bool Pokemon::confused() {
     return this->isConfused;
 }
@@ -152,6 +157,10 @@ void Pokemon::setStatus(Status newStatus) {
 
 void Pokemon::setConfusion(bool confusion) {
     this->isConfused = confusion;
+}
+
+void Pokemon::setName(Pkmn name){
+    this->name = name;
 }
 
 std::string Pokemon::ToString() {

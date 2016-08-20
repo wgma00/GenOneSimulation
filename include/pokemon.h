@@ -18,6 +18,7 @@ class Pokemon {
         enum modStat {MODATK, MODDEF, MODSPC, MODSPE};
         Status condition;
         bool isConfused = false;
+        Pkmn name;
 
     public:
         Pokemon(std::vector<Type> types, std::vector<Move> moves,
@@ -40,6 +41,7 @@ class Pokemon {
         int spcmod();
         int spemod();
         Status status();
+        Pkmn name();
         bool confused();
 
         void setType1(Type newType);
@@ -59,6 +61,7 @@ class Pokemon {
         void setSpeMod(int newModSpe);
         void setStatus(Status newStatus);
         void setConfusion(bool confusion);
+        void setName(Pkmn name);
 
         std::string ToString();
 };
