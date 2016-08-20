@@ -49,8 +49,8 @@ class Pokemon {
         int defmod();
         int spcmod();
         int spemod();
-        Status status();
         Pkmn name();
+        Status status();
         bool confused();
         bool rested();
         bool paramod();
@@ -75,8 +75,8 @@ class Pokemon {
         void setDefMod(int newModDef);
         void setSpcMod(int newModSpc);
         void setSpeMod(int newModSpe);
-        void setStatus(Status newStatus);
         void setName(Pkmn name);
+        void setStatus(Status newStatus);
         void setConfusion(bool newConfusion);
         void setRested(bool newRested);
         void setParaMod(bool newParaMod);

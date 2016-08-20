@@ -88,12 +88,12 @@ int Pokemon::spemod() {
     return this->mods.at(SPE);
 }
 
-Status Pokemon::status() {
-    return this->condition;
-}
-
 Pkmn Pokemon::name(){
     return this->name;
+}
+
+Status Pokemon::status() {
+    return this->condition;
 }
 
 bool Pokemon::confused() {
@@ -188,16 +188,16 @@ void Pokemon::setSpeMod(int newModSpe) {
     this->mods.at(MODSPE) = newModSpe;
 }
 
+void Pokemon::setName(Pkmn name){
+    this->name = name;
+}
+
 void Pokemon::setStatus(Status newStatus) {
     this->condition = newStatus;
 }
 
 void Pokemon::setConfusion(bool newConfusion) {
     this->isConfused = confusion;
-}
-
-void Pokemon::setName(Pkmn name){
-    this->name = name;
 }
 
 void Pokemon::setRested(bool newRested) {
