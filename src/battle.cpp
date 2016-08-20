@@ -68,7 +68,17 @@ bool canMove(Pokemon &pokemon) {
     } else if (pokemon.status() == PARALYSIS) {
         return (rand() % 100) >= 25;
     } else if (pokemon.status() == SLEEP) {
-        return pokemon.sleepturns() == 0;
+        if (pokemon.sleepturns() == 0) {
+            return true;
+        }
+
+        pokemon.setSleepTurns(pokemon.sleepturns() - 1);
+
+        if (pokemon.sleepturns == 0) {
+            pokemon.setStatus(NONE);
+        }
+
+        return false;
     } else {
         return false;
     }
