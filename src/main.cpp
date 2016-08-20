@@ -20,17 +20,17 @@ double battle(std::vector<Pokemon> team1, std::vector<Pokemon> team2) {
 
         if (team1[0].paramod()) {
             spemod = team1[0].spemod();
-            spemod1 = spemod > -1 ? (spemod + 2) / 4 : 2 / (4 - atkmod);
+            spemod1 = spemod > -1 ? (spemod + 2) / 4 : 2 / (4 - spemod);
         } else {
             spemod = team1[0].spemod();
-            spemod1 = spemod > -1 ? (spemod + 2) / 2 : 2 / (2 - atkmod);
+            spemod1 = spemod > -1 ? (spemod + 2) / 2 : 2 / (2 - spemod);
         }
         if (team2[0].paramod()) {
             spemod = team2[0].spemod();
-            spemod2 = spemod > -1 ? (spemod + 2) / 4 : 2 / (4 - atkmod);
+            spemod2 = spemod > -1 ? (spemod + 2) / 4 : 2 / (4 - spemod);
         } else {
             spemod = team2[0].spemod();
-            spemod2 = spemod > -1 ? (spemod + 2) / 2 : 2 / (2 - atkmod);
+            spemod2 = spemod > -1 ? (spemod + 2) / 2 : 2 / (2 - spemod);
         }
 
         spe1 *= spemod1;
