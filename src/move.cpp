@@ -18,7 +18,7 @@ Move::Move(std::string data){
             case 7:this->set_volatile_status_chance(str); break; 
             case 8:this->set_boosts(str); break; 
             case 9:this->set_heal(str); break; 
-            case 10:this->set_type(to_move(str)); break; 
+            case 10:this->set_type(to_type(str)); break; 
         } 
     }
 }
