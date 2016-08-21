@@ -1,6 +1,6 @@
 A moves consists of the following:
-name, accuracy, base_power, category(attach move, status, special), pp,
-self_inflected_status, volatile_status(frz, brn, confusion), 
+name, accuracy, base_power, category(attack move, status, special), pp,
+self_inflected_status, volatile_status(frz, para, sleep, confusion), 
 volatile_status_chance, boosts, healing, type
 
 multiple paramaters are split with | operators.
