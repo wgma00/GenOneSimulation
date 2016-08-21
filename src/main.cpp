@@ -74,7 +74,6 @@ void exActions(std::vector<Pokemon> &first, std::vector<Pokemon> &second) {
             Move m = first.[0].moves().at(choice);
 
             if (accuracy < first[0].moves().at(choice).get_accuracy()) {
-                // Time for a crapton of conditionals...
                 if (m.get_category() == "attack") {
                     damage = getDamage(m, first[0], second[0], crit, (((rand() % 16) + 85)) / 100);
 
@@ -83,25 +82,89 @@ void exActions(std::vector<Pokemon> &first, std::vector<Pokemon> &second) {
                             break;
                         }
                         case "nightshade": {
+                            damage = 100;
+                            break;
+                        }
+                        case "seismictoss": {
+                            damage = 100;
                             break;
                         }
                         case "doubleedge": {
+                            int recoil = std::floor(damage / 4.0);
+                            first[0].setCurrentHP(first[0].currentHP() - recoil);
+                            handleFaint(first);
                             break;
                         }
                         case "megadrain": {
+                            int heal = std::floor(damage / 2.0);
+                            first[0].setCurrentHP(std::max(first[0].currentHP() + heal, first[0].hp()));
                             break;
                         }
-                        case default: {
+                        default: {
                             break;
                         }
+                    }
+
+                    if (m.get_type() == NORMAL || m.get_type() == FIGHTING) {
+                        second[0].setCounterDamage(2 * damage);
                     }
 
                     second[0].setCurrentHP(second[0].currentHP() - damage);
                     handleFaint(second); // Slower side KOed
                 } else if (move.get_category() == "special") {
+                    switch(m.get_name()) {
+                        case "counter": {
+                            damage = counterDamage;
+                            counterDamage = 0;
+                            break;
+                        }
+                        case "doublekick": {
+                            break;
+                        }
+                        case "pinmissle": {
+                            break;
+                        }
+                        case "clamp": {
+                            break;
+                        }
+                        default: { // Selfdestruct or explosion
+                            break;
+                        }
+                    }
 
-                } else {
+                    if (m.get_type() == NORMAL || m.get_type() == FIGHTING) {
+                        second[0].setCounterDamage(2 * damage);
+                    }
 
+                    second[0].setCurrentHP(second[0].currentHP() - damage);
+                    handleFaint(second); // Slower side KOed
+                } else { // status move
+                    switch (m.getname()) {
+                        case "substitute": {
+                            break;
+                        }
+                        case "amnesia": {
+                            break;
+                        }
+                        case "rest": {
+                            break;
+                        }
+                        case "agility": {
+                            break;
+                        }
+                        case "recover": {
+                            break;
+                        }
+                        case "confuseray": {
+                            break;
+                        }
+                        case "reflect": {
+                            break;
+                        }
+                        default: { // Voltatile status moves
+                            break;
+                        }
+                    }
                 }
             }
 
@@ -154,6 +217,10 @@ void handleFaint(std::vector<Pokemon> &team) {
 void handleSwitch(std::vector<Pokemon> &team, int choice) {
     srand(time(NULL));
     int newchoice = choice - team[0].moves().size();
+    team[0].setConfusion(false);
+    team[0].setCounterDamage(0);
+    // reset stat modifiers
+    // reset sleep turns
 
     if (newchoice == 0) {
         newchoice = (rand() % (team.size() - 1)) + 1;

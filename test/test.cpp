@@ -1,7 +1,7 @@
-#include<iostream>
-#include<fstream>
-#include<vector>
-#include<cassert>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <cassert>
 #include "../src/move.cpp"
 
 struct TestMoveParsing{
