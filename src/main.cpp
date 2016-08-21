@@ -67,17 +67,13 @@ void exActions(std::vector<Pokemon> &first, std::vector<Pokemon> &second) {
     // First poke's moves
     if (choice <= first.moves().size() && first[0].canMove()) {
         if (first.moves().size() == 0) { //struggle
-            Move m("struggle,100,50,attack,10,TRUE,recoil,100 none,none,normal");
-            damage = getDamage(m, first[0], second[0], crit, (((rand() % 16) + 85)) / 100);
-            int recoil = std::floor(damage / 2.0);
-            first[0].setCurrentHP(first[0].currentHP() - recoil);
-            second[0].setCurrentHP(second[0].currentHP() - damage);
+            useStruggle(first, second);
             handleFaint(first); // Faster side KOed
             handleFaint(second); // Slower side KOed
         } else { // One of the mon's moves
-            if (accuracy < first[0].moves().at(choice).get_accuracy()) {
-                Move m = first.[0].moves().at(choice);
+            Move m = first.[0].moves().at(choice);
 
+            if (accuracy < first[0].moves().at(choice).get_accuracy()) {
                 // Time for a crapton of conditionals...
                 if (m.get_category() == "attack") {
                     damage = getDamage(m, first[0], second[0], crit, (((rand() % 16) + 85)) / 100);
@@ -102,12 +98,16 @@ void exActions(std::vector<Pokemon> &first, std::vector<Pokemon> &second) {
 
                     second[0].setCurrentHP(second[0].currentHP() - damage);
                     handleFaint(second); // Slower side KOed
-                    m.set_pp(m.get_pp() - 1);
                 } else if (move.get_category() == "special") {
 
                 } else {
 
                 }
+            }
+
+            m.set_pp(m.get_pp() - 1);
+            if (m.get_pp() == 0) {
+                // delete move from vector
             }
         }
     } else {
@@ -124,11 +124,7 @@ void exActions(std::vector<Pokemon> &first, std::vector<Pokemon> &second) {
     // Second poke's moves
     if (choice <= second.moves().size() && second[0].canMove()) {
         if (second.moves().size() == 0) { //struggle
-            Move m("struggle,100,50,attack,10,TRUE,recoil,100 none,none,normal");
-            damage = getDamage(m, second[0], first[0], crit, ((rand() % 16) + 85)) / 100;
-            int recoil = std::floor(damage / 2.0);
-            second[0].setCurrentHP(first[0].currentHP() - recoil);
-            first[0].setCurrentHP(second[0].currentHP() - damage);
+            useStruggle(second, first);
             handleFaint(first); // Faster side KOed
             handleFaint(second); // Slower side KOed
         } else { // One of the mon's moves
@@ -178,6 +174,15 @@ int handleClamp(std::vector<Pokemon> &team) {
     }
 
     return choice;
+}
+
+void useStruggle(std::vector<Pokemon> &team1, std::vector<Pokemon> &team2) {
+    srand(time(NULL));
+    Move m("struggle,100,50,attack,10,TRUE,recoil,100 none,none,normal");
+    damage = getDamage(m, team1[0], team2[0], crit, (((rand() % 16) + 85)) / 100);
+    int recoil = std::floor(damage / 2.0);
+    team1[0].setCurrentHP(team1[0].currentHP() - recoil);
+    team2[0].setCurrentHP(team2[0].currentHP() - damage);
 }
 
 std::vector<Pokemon> getBestTeam(std::vector<std::vector<Pokemon>> teams) {
